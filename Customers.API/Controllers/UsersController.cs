@@ -18,7 +18,7 @@ namespace Customers.API.Controllers
         public async Task<IActionResult> Get()
         {
             var users = await UsersService.GetAllUsers();
-            return Ok("all good");
+            return Ok(users);
         }
     }
 }
