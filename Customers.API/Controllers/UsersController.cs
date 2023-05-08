@@ -18,7 +18,11 @@ namespace Customers.API.Controllers
         public async Task<IActionResult> Get()
         {
             var users = await UsersService.GetAllUsers();
-            return Ok("all good");
+
+            if(users.Any())
+                return Ok(users);
+
+            return NotFound();
         }
     }
 }
