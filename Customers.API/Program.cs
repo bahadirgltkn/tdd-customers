@@ -1,3 +1,5 @@
+using Customers.API.Interfaces;
+
 namespace Customers.API
 {
     public class Program
@@ -5,6 +7,8 @@ namespace Customers.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            ConfigureServices(builder.Services);
 
             // Add services to the container.
 
@@ -30,6 +34,11 @@ namespace Customers.API
             app.MapControllers();
 
             app.Run();
+
+            void ConfigureServices(IServiceCollection services)
+            {
+                services.AddTransient<IUsersService, IUsersService>();
+            }
         }
     }
 }
