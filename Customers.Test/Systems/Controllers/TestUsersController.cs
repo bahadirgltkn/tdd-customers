@@ -1,6 +1,7 @@
 using Customers.API.Controllers;
 using Customers.API.Interfaces;
 using Customers.API.Models;
+using Customers.Test.Fixtures;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -16,21 +17,7 @@ namespace Customers.Test.Systems.Controllers
             var mockUsersService = new Mock<IUsersService>();
             mockUsersService
                 .Setup(service => service.GetAllUsers())
-                .ReturnsAsync(new List<User>()
-                {
-                    new User()
-                    {
-                        Id = 1,
-                        Name = "Bahadir",
-                        Address = new Address
-                        {
-                            City = "Istanbul",
-                            Street = "123 St",
-                            ZipCode = "34000"
-                        },
-                        Email = "bhdr@mail.com"
-                    }
-                });
+                .ReturnsAsync(UsersFixture.GetTestUsers());
 
             var sut = new UsersController(mockUsersService.Object);
 
@@ -66,21 +53,7 @@ namespace Customers.Test.Systems.Controllers
             var mockUsersService = new Mock<IUsersService>();
             mockUsersService
                 .Setup(service => service.GetAllUsers())
-                .ReturnsAsync(new List<User>()
-                {
-                    new User()
-                    {
-                        Id = 1,
-                        Name = "Bahadir",
-                        Address = new Address
-                        {
-                            City = "Istanbul",
-                            Street = "123 St",
-                            ZipCode = "34000"
-                        },
-                        Email = "bhdr@mail.com"
-                    }
-                });
+                .ReturnsAsync(UsersFixture.GetTestUsers());
 
             var sut = new UsersController(mockUsersService.Object);
 

@@ -1,4 +1,6 @@
+using Customers.API.Config;
 using Customers.API.Interfaces;
+using Customers.API.Services;
 
 namespace Customers.API
 {
@@ -37,7 +39,9 @@ namespace Customers.API
 
             void ConfigureServices(IServiceCollection services)
             {
-                services.AddTransient<IUsersService, IUsersService>();
+                services.Configure<UsersApiOptions>(builder.Configuration.GetSection("UsersApiOptions"));
+                services.AddTransient<IUsersService, UsersService>();
+                services.AddHttpClient<IUsersService, UsersService>();
             }
         }
     }
