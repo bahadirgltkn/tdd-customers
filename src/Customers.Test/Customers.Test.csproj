@@ -24,8 +24,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Customers.API\Customers.API.csproj" />
-  </ItemGroup>
-
 </Project>
